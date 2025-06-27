@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin123
     ports:
-      - "6590:5432"
+      - "6594:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -18,7 +18,7 @@ services:
     build: ./Backend
     container_name: veera-claims-backend
     ports:
-      - "3031:3031"
+      - "3035:3035"
     depends_on:
       - postgres
     environment:
@@ -35,14 +35,14 @@ services:
     build: ./Frontend
     container_name: veera-claims-frontend
     ports:
-      - "8113:80"
+      - "8121:80"
     restart: unless-stopped
 
   hr:
     build: ./HR
     container_name: veera-claims-hr
     ports:
-      - "8114:80"
+      - "8122:80"
     restart: unless-stopped
 
 volumes:
