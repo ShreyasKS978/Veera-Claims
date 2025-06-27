@@ -5,7 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const app = express();
-const port = 3031;
+const port = 3035;
 
 // Middleware
 app.use(cors());
@@ -95,7 +95,7 @@ async function initializeDatabase() {
 function getFileUrl(filename) {
   const baseUrl = process.env.NODE_ENV === 'production' 
     ? 'https://your-production-domain.com' 
-    : `http://13.232.23.97:${port}`;
+    : `http://3.109.121.104:${port}`;
   return `${baseUrl}/uploads/${encodeURIComponent(filename)}`;
 }
 
@@ -323,11 +323,10 @@ app.use((err, req, res, next) => {
 app.listen(port, async () => {
   try {
     await initializeDatabase();
-    console.log(`Server running on http://13.232.23.97:${port}`);
+    console.log(`Server running on http://3.109.121.104:${port}`);
   } catch (err) {
     console.error('Failed to start server:', err);
     process.exit(1);
   }
 });
-
 
